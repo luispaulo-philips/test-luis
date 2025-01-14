@@ -1,0 +1,2272 @@
+[
+  {
+    "id": "257a63e31ebdfdb2",
+    "type": "tab",
+    "label": "Table CRUD",
+    "disabled": false,
+    "info": "",
+    "env": [],
+    "flowCategory": {
+      "value": "",
+      "label": "---"
+    },
+    "dbPanelCode": ""
+  },
+  {
+    "id": "bda2e70d44d69c26",
+    "type": "group",
+    "z": "257a63e31ebdfdb2",
+    "name": "Create",
+    "style": {
+      "label": true,
+      "stroke": "#000000"
+    },
+    "nodes": [
+      "84bb992fa1766b60",
+      "aff4f47d24444c7e",
+      "6e07153d33333d9c",
+      "a93ca27c33f6df8c",
+      "66fe8bd456a6cbd4",
+      "f89af04b7ed9ba52",
+      "8e2523a4069c187a",
+      "110704ec656162b4",
+      "e6faa372d6667148",
+      "f9964e9d5315bf80",
+      "aac36d5b0ee13cec",
+      "2dfe1c6f426bcb59"
+    ],
+    "x": 774,
+    "y": 1039,
+    "w": 1612,
+    "h": 422
+  },
+  {
+    "id": "7901cf7a8fc2e9e9",
+    "type": "group",
+    "z": "257a63e31ebdfdb2",
+    "name": "Delete",
+    "style": {
+      "label": true
+    },
+    "nodes": [
+      "2d3b151a29b517f1",
+      "ac55275a433c946c",
+      "8cbe20a5ca65a199",
+      "6b1e3a5eb733080f",
+      "fee21f6427d6084a",
+      "57c8898739214135",
+      "7c32b443df072274",
+      "fdba1b8ba805526f",
+      "5b10d35444b6689b",
+      "806832c2ce9ea3a1",
+      "14e1c766c89a15af",
+      "195cbe47508b2141",
+      "63d16bc53831805c",
+      "26b9cbd7d1e1d820",
+      "e8c48bbddbbb3d1e",
+      "340eec4683fcb03b",
+      "acf3bb1debeef008",
+      "017db3e39d0beae0",
+      "d026851bbce658af"
+    ],
+    "x": 754,
+    "y": 2139,
+    "w": 1532,
+    "h": 742
+  },
+  {
+    "id": "3b4c963e23df0afb",
+    "type": "group",
+    "z": "257a63e31ebdfdb2",
+    "name": "Update",
+    "style": {
+      "label": true
+    },
+    "nodes": [
+      "2a6fe6fa32ca7695",
+      "fa2030b349496640",
+      "7dac69ca6c1d2d86",
+      "fa3a134e82a88671",
+      "2d2fd68b080b5206",
+      "f2985a82444d5fb5",
+      "842d97b8d1dce1be",
+      "0c56671d49c67e63"
+    ],
+    "x": 754,
+    "y": 1599,
+    "w": 1232,
+    "h": 442
+  },
+  {
+    "id": "fa485b2c6e39d768",
+    "type": "group",
+    "z": "257a63e31ebdfdb2",
+    "style": {
+      "stroke": "#999999",
+      "stroke-opacity": "1",
+      "fill": "none",
+      "fill-opacity": "1",
+      "label": true,
+      "label-position": "nw",
+      "color": "#a4a4a4"
+    },
+    "nodes": [
+      "75b8c6e7e03c7dfa",
+      "ece539d627a497fc",
+      "8d36a3629b9c9542",
+      "cb5036004f47bb2b",
+      "78d2228e65cc592a",
+      "a214d1c566c6fd93",
+      "0afcf01f9e36bf9c",
+      "66ce6f2d0039de40",
+      "c818ac2b196ebd17",
+      "bd9ed11484902430",
+      "c5f03986653f2fbc",
+      "7284fa8311105885",
+      "a815424125b1bccd",
+      "940159475d3d260a",
+      "6c5b89c12b8bca66",
+      "0509add46de6edcc",
+      "f15964a19fac2df6",
+      "b3f05e531033332d",
+      "ae8b4a18c79f5109",
+      "43df7c728671d7fd",
+      "42c2588592b24685",
+      "bca86ace82fb8ac2",
+      "4ae75afcc53aca70",
+      "3a9d88ebc2b1dad8"
+    ],
+    "x": 354,
+    "y": 2999,
+    "w": 1512,
+    "h": 422
+  },
+  {
+    "id": "84bb992fa1766b60",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "parameters": [],
+    "name": "ResponseTable",
+    "func": "const response = {};\nconst dataRecordResult = \n    {\n        \"smartLinkResponse\": \"TABLE\",\n\t    \"tableName\": msg.value.tableName\n    };\nresponse.dataRecordResult   = dataRecordResult;\nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.failureReason = msg.payload.error[0] || msg.payload.error.message;\n}\nelse{\n    response.status = 'SUCCESS';\n}\n\nmsg.payload = { \n    ...response, \n    headers: msg.headers\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1600,
+    "y": 1300,
+    "wires": [
+      [
+        "f89af04b7ed9ba52",
+        "2dfe1c6f426bcb59"
+      ]
+    ]
+  },
+  {
+    "id": "aff4f47d24444c7e",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "Creation table response",
+    "topic": "spinal.cmdk.table.TableResponse",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": "",
+    "transactiontimeout": "",
+    "metadatamaxage": "",
+    "allowautotopiccreation": false,
+    "connection": {
+      "name": "Local kafka producer",
+      "host": "localhost:9092",
+      "guid": "112AB8800B84866AE0636D0B0A0A4CF5"
+    },
+    "broker": "142",
+    "x": 2250,
+    "y": 1140,
+    "wires": []
+  },
+  {
+    "id": "6e07153d33333d9c",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "",
+    "property": "payload",
+    "action": "str",
+    "pretty": true,
+    "x": 2110,
+    "y": 1260,
+    "wires": [
+      [
+        "aff4f47d24444c7e"
+      ]
+    ]
+  },
+  {
+    "id": "a93ca27c33f6df8c",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "parameters": [],
+    "name": "Create table script",
+    "func": "const dataRecord = msg.value;\n\nif (dataRecord.createdOn != null) {\n    dataRecord.createdOn = `to_date('${dataRecord.createdOn}', 'YYYY-MM-DD HH24:MI:SS')`;\n}\n\nif (dataRecord.dateCreated != null) {\n    dataRecord.dateCreated = `to_date('${dataRecord.dateCreated}', 'YYYY-MM-DD HH24:MI:SS')`;\n}\n\nfunction checkIsNull(value){\n    return value === null ? null : `'${value}'`;\n}\n\nconst sqlInsert = `insert into tabela_sistema( nm_tabela,ds_shortname,dt_criacao,ds_layer,cd_exp_cadastro,cd_exp_tabela,ds_aplicacao,nr_seq_modulo,ie_cadastro_geral,ie_regra_tabela,ie_regra_atributo,ie_temporaria,ie_callstack,ie_cria_log_local,cd_exp_titulo,ds_tabela,ds_sql_lookup,dt_atualizacao,nm_usuario,ie_situacao,IE_TIPO_CALCULO,IE_GERA_DEFINICAO,QT_REGISTROS_ATUAL,QT_REGISTROS_PREVISTO,QT_FATOR_CONVERSAO,DS_TABLESPACE_TAB,IE_TROCA_CAMPO_GRID,QT_POS_ESQUERDA,DS_TABLESPACE_IND,IE_CRIAR_ALTERAR,QT_MAX_REGISTRO,IE_SINCRONIZAR,IE_RESTRINGE_ESTAB,IE_RESTRINGE_EMPRESA,QT_ALTURA_PANEL,QT_POS_TOPO,QT_MAX_CAMPO,IE_LIMPAR_LOG,QT_INTERVALO_CAMPO,QT_LARGURA_PANEL,IE_EXPORTAR)values('${dataRecord.tableName}','${dataRecord.shortName}',${dataRecord.dateCreated},'${dataRecord.layerName}','${dataRecord.titleExpressionId}','${dataRecord.descriptionExpressionId}','${dataRecord.applicationName}','${dataRecord.sequenceModule}','${dataRecord.generalRecords}', ${checkIsNull(dataRecord.tableRule)},${checkIsNull(dataRecord.attributeRule)},${checkIsNull(dataRecord.temporaryTable)},${checkIsNull(dataRecord.saveCallStack)},${checkIsNull(dataRecord.createLocalLog)},${checkIsNull(dataRecord.expressionPanelTitle)},SUBSTR(${checkIsNull(dataRecord.tableDescription)}, 1, 200),${checkIsNull(dataRecord.sqlLookup)},${dataRecord.createdOn},'${dataRecord.createdBy}',${checkIsNull(dataRecord.status)},'R','S','100','100','1','TASY_DATA','S','0','TASY_INDEX','M','0','N','N','N','0','0','0','N','0','0','N')`;\nmsg.topic = sqlInsert;\nmsg.value = dataRecord;\n \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1070,
+    "y": 1300,
+    "wires": [
+      [
+        "f9964e9d5315bf80"
+      ]
+    ]
+  },
+  {
+    "id": "66fe8bd456a6cbd4",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "parameters": [],
+    "name": "Count table script",
+    "func": "const communicationTopic    = msg.payload.value.communicationTopic;\nconst dataRecord            = msg.payload.value.dataRecord;\n\nconst scriptCountTable = `SELECT nvl(max(1), 0) CNT FROM TABELA_SISTEMA WHERE NM_TABELA ='${dataRecord.tableName}' OR '${dataRecord.layerName}' = 'CORE'`;\n\nmsg.topic = scriptCountTable;\nmsg.event = communicationTopic.eventType;\nmsg.value = dataRecord;\nmsg.headers = msg.payload.headers;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 890,
+    "y": 1080,
+    "wires": [
+      [
+        "e6faa372d6667148"
+      ]
+    ]
+  },
+  {
+    "id": "f89af04b7ed9ba52",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "Response Table debug",
+    "active": true,
+    "tosidebar": true,
+    "console": true,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1690,
+    "y": 1100,
+    "wires": []
+  },
+  {
+    "id": "8e2523a4069c187a",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "switch - Contains tables",
+    "property": "payload.select[0].resultSet[0].CNT",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 950,
+    "y": 1220,
+    "wires": [
+      [
+        "110704ec656162b4"
+      ],
+      [
+        "a93ca27c33f6df8c"
+      ]
+    ]
+  },
+  {
+    "id": "110704ec656162b4",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "parameters": [],
+    "name": "Duplicate/Core Table Check",
+    "func": "const dataRecord = msg.value;\n \nif (msg.value.layerName == 'CORE') {\n    msg.payload.error = {\n        message : 'CORE Table cannot be added.'\n    };\n}\nelse {\nmsg.payload.error = {\n    message: 'Table already exist.'\n};\n}\n \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1360,
+    "y": 1220,
+    "wires": [
+      [
+        "84bb992fa1766b60"
+      ]
+    ]
+  },
+  {
+    "id": "e6faa372d6667148",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "",
+    "x": 910,
+    "y": 1140,
+    "wires": [
+      [
+        "8e2523a4069c187a"
+      ]
+    ]
+  },
+  {
+    "id": "f9964e9d5315bf80",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "",
+    "x": 1350,
+    "y": 1300,
+    "wires": [
+      [
+        "84bb992fa1766b60"
+      ]
+    ]
+  },
+  {
+    "id": "2d3b151a29b517f1",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "Delete custom table Script",
+    "func": "const dataRecord = msg.value;\n\nconst scriptTableDelete = `DELETE from tabela_sistema WHERE nm_tabela = '${dataRecord.tableName}'`;\n\nmsg.topic = scriptTableDelete;\nmsg.value = dataRecord;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1050,
+    "y": 2660,
+    "wires": [
+      [
+        "fee21f6427d6084a"
+      ]
+    ]
+  },
+  {
+    "id": "ac55275a433c946c",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "",
+    "property": "payload",
+    "action": "str",
+    "pretty": true,
+    "x": 2150,
+    "y": 2740,
+    "wires": [
+      [
+        "6b1e3a5eb733080f"
+      ]
+    ]
+  },
+  {
+    "id": "8cbe20a5ca65a199",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "Response Delete",
+    "func": "const response = {};\n\nconst dataRecordResult = \n    {\n        \"smartLinkResponse\": \"TABLE\",\n\t    \"tableName\": msg.value.tableName\n    };\n \nresponse.dataRecordResult   = dataRecordResult;\n \nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.failureReason = msg.payload.error[0] || msg.payload.error.message;\n}\nelse{\n    response.status = 'SUCCESS';\n}\n \nmsg.payload = { \n    ...response, \n    headers: msg.headers\n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1650,
+    "y": 2660,
+    "wires": [
+      [
+        "14e1c766c89a15af",
+        "d026851bbce658af"
+      ]
+    ]
+  },
+  {
+    "id": "6b1e3a5eb733080f",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "Delete table response",
+    "topic": "spinal.cmdk.table.TableResponse",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": "",
+    "transactiontimeout": "",
+    "metadatamaxage": "",
+    "allowautotopiccreation": false,
+    "connection": {
+      "name": "Local kafka producer",
+      "host": "localhost:9092",
+      "guid": "112AB8800B84866AE0636D0B0A0A4CF5"
+    },
+    "broker": "142",
+    "x": 2160,
+    "y": 2600,
+    "wires": []
+  },
+  {
+    "id": "fee21f6427d6084a",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "",
+    "x": 1370,
+    "y": 2660,
+    "wires": [
+      [
+        "8cbe20a5ca65a199"
+      ]
+    ]
+  },
+  {
+    "id": "57c8898739214135",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "count table responsibility script",
+    "func": "const dataRecord            = msg.value;\n\nconst scriptCountTRTable = `SELECT nvl(max(1), 0) CNT FROM TABELA_RESPONSABILIDADE WHERE NM_TABELA = '${dataRecord.tableName}'`;\n\nmsg.topic = scriptCountTRTable;\nmsg.value = dataRecord;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 910,
+    "y": 2400,
+    "wires": [
+      [
+        "7c32b443df072274"
+      ]
+    ]
+  },
+  {
+    "id": "7c32b443df072274",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "",
+    "x": 1230,
+    "y": 2400,
+    "wires": [
+      [
+        "fdba1b8ba805526f"
+      ]
+    ]
+  },
+  {
+    "id": "fdba1b8ba805526f",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "switch - Contains responsibility tables",
+    "property": "msg.payload.select[0].resultSet[0].CNT",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 990,
+    "y": 2500,
+    "wires": [
+      [
+        "5b10d35444b6689b"
+      ],
+      [
+        "2d3b151a29b517f1"
+      ]
+    ]
+  },
+  {
+    "id": "5b10d35444b6689b",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "Delete table responsibility Script",
+    "func": "const dataRecord = msg.value;\n\nconst scriptTableRespDelete = `DELETE from TABELA_RESPONSABILIDADE WHERE nm_tabela = '${dataRecord.tableName}'`;\n\nmsg.topic = scriptTableRespDelete;\nmsg.value = dataRecord;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1390,
+    "y": 2500,
+    "wires": [
+      [
+        "806832c2ce9ea3a1"
+      ]
+    ]
+  },
+  {
+    "id": "806832c2ce9ea3a1",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "",
+    "x": 1750,
+    "y": 2500,
+    "wires": [
+      [
+        "2d3b151a29b517f1"
+      ]
+    ]
+  },
+  {
+    "id": "14e1c766c89a15af",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "Response Table debug",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1840,
+    "y": 2580,
+    "wires": []
+  },
+  {
+    "id": "aac36d5b0ee13cec",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "",
+    "x": 1810,
+    "y": 1420,
+    "wires": [
+      [
+        "9f2c0bd60849c87f"
+      ]
+    ]
+  },
+  {
+    "id": "195cbe47508b2141",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "Call Procedure",
+    "func": "const dataRecord = msg.value;\nconst tableName = dataRecord.tableName;\nconst username = dataRecord.createdBy;\n\nlet procedure = `call DELETE_CLEAN_TBL('${tableName}')`\n\nmsg.topic = procedure;\nmsg.event = 'SQL-TABLE-DELETE-PROC';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1640,
+    "y": 2840,
+    "wires": [
+      [
+        "63d16bc53831805c"
+      ]
+    ]
+  },
+  {
+    "id": "63d16bc53831805c",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "",
+    "x": 1910,
+    "y": 2840,
+    "wires": [
+      [
+        "26b9cbd7d1e1d820"
+      ]
+    ]
+  },
+  {
+    "id": "26b9cbd7d1e1d820",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "Response Delete",
+    "func": "const response = {};\n\nconst dataRecordResult = \n    {\n        \"smartLinkResponse\": \"TABLE\",\n\t    \"tableName\": msg.value.tableName\n    };\n \nresponse.dataRecordResult   = dataRecordResult;\n \nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.failureReason = msg.payload.error[0];\n}\nelse{\n    response.status = 'SUCCESS';\n}\n \nmsg.payload = { \n    ...response, \n    headers: msg.headers\n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 2170,
+    "y": 2840,
+    "wires": [
+      [
+        "ac55275a433c946c"
+      ]
+    ]
+  },
+  {
+    "id": "2a6fe6fa32ca7695",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "parameters": [],
+    "name": "Update table script",
+    "func": "const dataRecord = msg.value;\n\nconst sqlUpdate = `UPDATE tabela_sistema SET nm_tabela = '${dataRecord.tableName}',ds_shortname = '${dataRecord.shortName}',ds_tabela = '${dataRecord.tableDescription}',cd_exp_cadastro = '${dataRecord.descriptionExpressionId}',cd_exp_tabela = '${dataRecord.titleExpressionId}',ds_aplicacao = '${dataRecord.applicationName}',nr_seq_modulo = '${dataRecord.sequenceModule}',ie_cadastro_geral = '${dataRecord.generalRecords}',ie_regra_tabela = '${dataRecord.tableRule}',ie_regra_atributo = '${dataRecord.attributeRule}',ie_temporaria = '${dataRecord.temporaryTable}',ie_callstack = '${dataRecord.saveCallStack}',ie_cria_log_local = '${dataRecord.createLocalLog}',cd_exp_titulo = ${dataRecord.expressionPanelTitle},ds_sql_lookup = '${dataRecord.sqlLookup}',dt_atualizacao_nrec = TO_DATE('${dataRecord.modifiedOn}', 'yyyy-mm-dd hh24:mi:ss'),nm_usuario_nrec = '${dataRecord.modifiedBy}',ie_situacao = 'A' WHERE nm_tabela = '${dataRecord.tableName}'`;\n\nmsg.topic = sqlUpdate;\nmsg.value = dataRecord;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 890,
+    "y": 1900,
+    "wires": [
+      [
+        "2d2fd68b080b5206"
+      ]
+    ]
+  },
+  {
+    "id": "fa2030b349496640",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "name": "Update table response",
+    "topic": "spinal.cmdk.table.TableResponse",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": "",
+    "transactiontimeout": "",
+    "metadatamaxage": "",
+    "allowautotopiccreation": false,
+    "connection": {
+      "name": "Local kafka producer",
+      "host": "localhost:9092",
+      "guid": "112AB8800B84866AE0636D0B0A0A4CF5"
+    },
+    "broker": "142",
+    "x": 1860,
+    "y": 1900,
+    "wires": []
+  },
+  {
+    "id": "7dac69ca6c1d2d86",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "parameters": [],
+    "name": "Response Table",
+    "func": "const response = {};\n\nconst dataRecordResult = \n    {\n        \"smartLinkResponse\": \"TABLE\",\n\t    \"tableName\": msg.value.tableName\n    };\n \nresponse.dataRecordResult   = dataRecordResult;\n \nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.failureReason = msg.payload.error[0] || msg.payload.error.message;\n}\nelse{\n    response.status = 'SUCCESS';\n}\n \nmsg.payload = { \n    ...response, \n    headers: msg.headers\n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1400,
+    "y": 1900,
+    "wires": [
+      [
+        "fa3a134e82a88671",
+        "f2985a82444d5fb5"
+      ]
+    ]
+  },
+  {
+    "id": "fa3a134e82a88671",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "name": "",
+    "property": "payload",
+    "action": "str",
+    "pretty": false,
+    "x": 1610,
+    "y": 1900,
+    "wires": [
+      [
+        "fa2030b349496640"
+      ]
+    ]
+  },
+  {
+    "id": "2d2fd68b080b5206",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "name": "",
+    "x": 1150,
+    "y": 1900,
+    "wires": [
+      [
+        "7dac69ca6c1d2d86"
+      ]
+    ]
+  },
+  {
+    "id": "f2985a82444d5fb5",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "name": "Response update debug ",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1630,
+    "y": 2000,
+    "wires": []
+  },
+  {
+    "id": "75b8c6e7e03c7dfa",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "Table Synchronization Errors Response",
+    "topic": "spinal.cmdk.table.TableSyncErrorResponse",
+    "advancedoptions": false,
+    "acknowledge": "all",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": 30000,
+    "transactiontimeout": 60000,
+    "metadatamaxage": 300000,
+    "allowautotopiccreation": false,
+    "connection": {
+      "name": "Default broker",
+      "host": "kafka:29092"
+    },
+    "broker": "0",
+    "x": 1680,
+    "y": 3160,
+    "wires": []
+  },
+  {
+    "id": "ece539d627a497fc",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 1410,
+    "y": 3160,
+    "wires": [
+      [
+        "75b8c6e7e03c7dfa",
+        "cb5036004f47bb2b"
+      ]
+    ]
+  },
+  {
+    "id": "8d36a3629b9c9542",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "parameters": [],
+    "name": "function 1",
+    "func": "const response = {};\n\nif (msg.payload.error && msg.payload.error.length > 0 && msg.payload.error[0].message) {\n    response.status = 'ERROR';\n    response.error = msg.payload.error[0].message;\n} else if (msg.payload.select && msg.payload.select.length > 0 && msg.payload.select[0].resultSet) {\n    response.status = 'SUCCESS';\n    response.rows = msg.payload.select[0].resultSet;\n} else {\n    response.status = 'ERROR';\n    response.error = 'Invalid data structure in msg.payload';\n}\n\nmsg.payload = { \n    ...response, \n    headers: msg.headers \n};\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1260,
+    "y": 3160,
+    "wires": [
+      [
+        "ece539d627a497fc"
+      ]
+    ]
+  },
+  {
+    "id": "cb5036004f47bb2b",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1540,
+    "y": 3220,
+    "wires": []
+  },
+  {
+    "id": "78d2228e65cc592a",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "x": 1090,
+    "y": 3160,
+    "wires": [
+      [
+        "8d36a3629b9c9542"
+      ]
+    ]
+  },
+  {
+    "id": "a214d1c566c6fd93",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "parameters": [],
+    "name": "Select Errors",
+    "func": "const response = {};\nconst tableName = msg.payload.value.tableName;\n\n  \nconst sql = `SELECT e.*, s.ds_script\nfrom CMDK_SYNC_QUEUE_ERRORS e , CMDK_SYNC_QUEUE s\nwhere e.nr_seq_sync = s.nr_sequencia \nand s.object_name = '${tableName}'`;\n    \nmsg.topic = sql;\nmsg.event = 'SQL-GET-TABLE-ERRORS';\nmsg.headers = msg.payload.headers;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 910,
+    "y": 3160,
+    "wires": [
+      [
+        "78d2228e65cc592a"
+      ]
+    ]
+  },
+  {
+    "id": "0afcf01f9e36bf9c",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "property": "payload.value",
+    "action": "",
+    "pretty": false,
+    "x": 770,
+    "y": 3160,
+    "wires": [
+      [
+        "a214d1c566c6fd93"
+      ]
+    ]
+  },
+  {
+    "id": "66ce6f2d0039de40",
+    "type": "spinal-consumer",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "Table Synchronization Errors - Request",
+    "outOfRangeOffset": "earliest",
+    "fromOffset": "latest",
+    "topic": "spinal.cmdk.table.TableSyncErrorRequest",
+    "groupid": "cmdk-smartlink-table-sync-errors-request",
+    "connection": {
+      "name": "broker name",
+      "host": "localhost:9092"
+    },
+    "broker": "0",
+    "x": 530,
+    "y": 3160,
+    "wires": [
+      [
+        "0afcf01f9e36bf9c"
+      ]
+    ]
+  },
+  {
+    "id": "c818ac2b196ebd17",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1460,
+    "y": 3080,
+    "wires": []
+  },
+  {
+    "id": "bd9ed11484902430",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "parameters": [],
+    "name": "function 2",
+    "func": "const response = {};\n\nresponse.status = 'SUCCESS' \n\nif (msg.payload.error && msg.payload.error.length > 0 && msg.payload.error[0].message) {\n    response.status = 'ERROR';\n    response.error = msg.payload.error[0].message;\n} \n\nmsg.payload = { \n    ...response, \n    headers: msg.headers \n};\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1300,
+    "y": 3040,
+    "wires": [
+      [
+        "7284fa8311105885",
+        "c818ac2b196ebd17"
+      ]
+    ]
+  },
+  {
+    "id": "c5f03986653f2fbc",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "x": 1110,
+    "y": 3040,
+    "wires": [
+      [
+        "bd9ed11484902430"
+      ]
+    ]
+  },
+  {
+    "id": "7284fa8311105885",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 1450,
+    "y": 3040,
+    "wires": [
+      [
+        "940159475d3d260a"
+      ]
+    ]
+  },
+  {
+    "id": "a815424125b1bccd",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "parameters": [],
+    "name": "Sync Table",
+    "func": "const tableName = msg.payload.value.tableName;\n\nconst sql = `CALL APP_EXTENSION.cmdk_sync_table('${tableName}')`;\n\n\nmsg.topic = sql;\nmsg.event = 'SQL-GET-SYNC-TABLE';\nmsg.headers = msg.payload.headers;\nmsg.value = tableName;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 910,
+    "y": 3040,
+    "wires": [
+      [
+        "c5f03986653f2fbc"
+      ]
+    ]
+  },
+  {
+    "id": "940159475d3d260a",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "Table Synchronization Response",
+    "topic": "spinal.cmdk.table.TableSynchronizationResponse",
+    "advancedoptions": false,
+    "acknowledge": "all",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": 30000,
+    "transactiontimeout": 60000,
+    "metadatamaxage": 300000,
+    "allowautotopiccreation": false,
+    "connection": {
+      "name": "Default broker",
+      "host": "kafka:29092"
+    },
+    "broker": "0",
+    "x": 1660,
+    "y": 3040,
+    "wires": []
+  },
+  {
+    "id": "6c5b89c12b8bca66",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "property": "payload.value",
+    "action": "",
+    "pretty": false,
+    "x": 730,
+    "y": 3040,
+    "wires": [
+      [
+        "a815424125b1bccd"
+      ]
+    ]
+  },
+  {
+    "id": "0509add46de6edcc",
+    "type": "spinal-consumer",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "Table Synchronization - Request",
+    "outOfRangeOffset": "earliest",
+    "fromOffset": "latest",
+    "topic": "spinal.cmdk.table.TableSynchronizationRequest",
+    "groupid": "cmdk-smartlink-table-sync-request",
+    "connection": {
+      "name": "broker name",
+      "host": "localhost:9092"
+    },
+    "broker": "0",
+    "x": 510,
+    "y": 3040,
+    "wires": [
+      [
+        "6c5b89c12b8bca66"
+      ]
+    ]
+  },
+  {
+    "id": "f15964a19fac2df6",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "Table Script Response",
+    "topic": "spinal.cmdk.table.TableScriptResponse",
+    "advancedoptions": false,
+    "acknowledge": "all",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": 30000,
+    "transactiontimeout": 60000,
+    "metadatamaxage": 300000,
+    "allowautotopiccreation": false,
+    "connection": {
+      "name": "broker name",
+      "host": "localhost:9092"
+    },
+    "broker": "0",
+    "x": 1740,
+    "y": 3300,
+    "wires": []
+  },
+  {
+    "id": "b3f05e531033332d",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 1410,
+    "y": 3300,
+    "wires": [
+      [
+        "f15964a19fac2df6",
+        "43df7c728671d7fd"
+      ]
+    ]
+  },
+  {
+    "id": "ae8b4a18c79f5109",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "parameters": [],
+    "name": "function 3",
+    "func": "const response = {};\n\nif (msg.payload.error && msg.payload.error.length > 0 && msg.payload.error[0].message) {\n    response.status = 'ERROR';\n    response.error = msg.payload.error[0].message;\n} else if (msg.payload.select && msg.payload.select.length > 0 && msg.payload.select[0].resultSet) {\n    response.status = 'SUCCESS';\n    response.rows = msg.payload.select[0].resultSet;\n} else {\n    response.status = 'ERROR';\n    response.error = 'Invalid data structure in msg.payload';\n}\n\nmsg.payload = { \n    ...response, \n    headers: msg.headers \n};\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1260,
+    "y": 3300,
+    "wires": [
+      [
+        "b3f05e531033332d"
+      ]
+    ]
+  },
+  {
+    "id": "43df7c728671d7fd",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "debug 3",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1540,
+    "y": 3380,
+    "wires": []
+  },
+  {
+    "id": "42c2588592b24685",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "x": 1090,
+    "y": 3300,
+    "wires": [
+      [
+        "ae8b4a18c79f5109"
+      ]
+    ]
+  },
+  {
+    "id": "bca86ace82fb8ac2",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "parameters": [],
+    "name": "Select Script",
+    "func": "const response = {};\nconst tableName = msg.payload.value.tableName;\n\n  \nconst sql = `\n    SELECT s.ds_script DS_SCRIPT\n    from CMDK_SYNC_QUEUE s\n    where s.object_name = '${tableName}'\n`;\n    \nmsg.topic = sql;\nmsg.event = 'SQL-GET-TABLE-SCRIPT';\nmsg.headers = msg.payload.headers;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 910,
+    "y": 3300,
+    "wires": [
+      [
+        "42c2588592b24685"
+      ]
+    ]
+  },
+  {
+    "id": "4ae75afcc53aca70",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "",
+    "property": "payload.value",
+    "action": "",
+    "pretty": false,
+    "x": 710,
+    "y": 3300,
+    "wires": [
+      [
+        "bca86ace82fb8ac2"
+      ]
+    ]
+  },
+  {
+    "id": "3a9d88ebc2b1dad8",
+    "type": "spinal-consumer",
+    "z": "257a63e31ebdfdb2",
+    "g": "fa485b2c6e39d768",
+    "name": "Table Script - Request",
+    "outOfRangeOffset": "earliest",
+    "fromOffset": "latest",
+    "topic": "spinal.cmdk.table.TableScriptRequest",
+    "groupid": "cmdk-smartlink-table-sync-script-request",
+    "connection": {
+      "name": "broker name",
+      "host": "localhost:9092"
+    },
+    "broker": "0",
+    "x": 480,
+    "y": 3300,
+    "wires": [
+      [
+        "4ae75afcc53aca70"
+      ]
+    ]
+  },
+  {
+    "id": "1818c4aec88152f8",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "property": "payload.value",
+    "action": "obj",
+    "pretty": false,
+    "x": 470,
+    "y": 1360,
+    "wires": [
+      [
+        "f804bd874eefbebb"
+      ]
+    ]
+  },
+  {
+    "id": "f804bd874eefbebb",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "name": "event",
+    "property": "payload.value.communicationTopic.eventType",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "CREATE",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "UPDATE",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "DELETE",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 3,
+    "x": 610,
+    "y": 1360,
+    "wires": [
+      [
+        "66fe8bd456a6cbd4"
+      ],
+      [
+        "842d97b8d1dce1be"
+      ],
+      [
+        "e8c48bbddbbb3d1e"
+      ]
+    ]
+  },
+  {
+    "id": "d0aa5025f0384ffa",
+    "type": "spinal-consumer",
+    "z": "257a63e31ebdfdb2",
+    "name": "Table Request",
+    "outOfRangeOffset": "earliest",
+    "fromOffset": "latest",
+    "topic": "spinal.cmdk.table.TableRequest",
+    "groupid": "cmdk-smartlink-table-crud-request",
+    "connection": {},
+    "broker": "0",
+    "x": 250,
+    "y": 1360,
+    "wires": [
+      [
+        "1818c4aec88152f8"
+      ]
+    ]
+  },
+  {
+    "id": "7659761a9c72bf66",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Fetch DS_LAYER Script",
+    "func": "const sql = `SELECT DISTINCT upper(DS_LAYER) DS_LAYER FROM tabela_sistema ORDER BY DS_LAYER`;\n\nmsg.topic = sql;\nmsg.event = 'SELECT-DS-LAYER';\nmsg.headers = msg.payload.headers;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 670,
+    "y": 720,
+    "wires": [
+      [
+        "595dbdbdcb51a7af",
+        "0fcec17b53c5f778"
+      ]
+    ]
+  },
+  {
+    "id": "38f5478c66ec8cd7",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Response table",
+    "func": "const response = {};\nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.error = msg.payload.error[0];\n}else{\n    response.status = 'SUCCESS';\n    response.rows = msg.payload.select[0].resultSet;\n}\nresponse.correlationId = msg.headers.kafka_correlationId;\nmsg.payload = { \n    ...response, \n    headers: msg.headers \n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1180,
+    "y": 720,
+    "wires": [
+      [
+        "d7e40ae4f46f50c1",
+        "5c3fc7c73210de77"
+      ]
+    ]
+  },
+  {
+    "id": "595dbdbdcb51a7af",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "x": 950,
+    "y": 720,
+    "wires": [
+      [
+        "38f5478c66ec8cd7",
+        "4fc37d4c873a349a"
+      ]
+    ]
+  },
+  {
+    "id": "49c1f8b9936a58a0",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Fetch table by Name Script",
+    "func": "// Get query parameters\nconst filterParams            = msg.value;\nconst tableName = msg.payload.value.dataRecord.tableName;\n\nconst sql = `SELECT nvl(obter_expressao_idioma(t.cd_exp_tabela, 5), t.ds_tabela) as DS_TABELA,  t.nm_tabela, t.DS_SHORTNAME, t.CD_EXP_CADASTRO, t.CD_EXP_TABELA, t.NR_SEQ_MODULO, t.IE_CADASTRO_GERAL, t.IE_TEMPORARIA, t.DS_APLICACAO, t.IE_REGRA_ATRIBUTO, t.IE_CRIA_LOG_LOCAL, t.IE_REGRA_TABELA,\nt.DT_CRIACAO, t.DS_LAYER, t.DT_ATUALIZACAO, t.DT_ATUALIZACAO_NREC, t.NM_USUARIO, t.NM_USUARIO_NREC, t.IE_CALLSTACK, t.CD_EXP_TITULO, t.DS_SQL_LOOKUP\n        FROM TABELA_SISTEMA t where t.nm_tabela='${tableName}'`;\n\nmsg.topic = sql;\nmsg.event = 'SELECT-TABLE-NAME';\nmsg.headers = msg.payload.headers;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 700,
+    "y": 400,
+    "wires": [
+      [
+        "0b180fa8551c67f7",
+        "57fe2611ef89890c"
+      ]
+    ]
+  },
+  {
+    "id": "be8686f8a4c89646",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Response table",
+    "func": "const response = {};\nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.error = msg.payload.error[0];\n}else{\n    response.status = 'SUCCESS';\n    response.rows = msg.payload.select[0].resultSet;\n}\nresponse.correlationId = msg.headers.kafka_correlationId;\nmsg.payload = { \n    ...response, \n    headers: msg.headers \n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1200,
+    "y": 400,
+    "wires": [
+      [
+        "c04c7a06b23ebeb9",
+        "60d7ba81dadf18c2"
+      ]
+    ]
+  },
+  {
+    "id": "0b180fa8551c67f7",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Debug Built SQL 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 910,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "c04c7a06b23ebeb9",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Response Debug  1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1470,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "882644f82ba652ad",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Debug Incoming Payload",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 490,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "7cda06ed5a1c0304",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Database Debug ",
+    "active": true,
+    "tosidebar": true,
+    "console": true,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1190,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "57fe2611ef89890c",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "x": 970,
+    "y": 400,
+    "wires": [
+      [
+        "be8686f8a4c89646",
+        "7cda06ed5a1c0304"
+      ]
+    ]
+  },
+  {
+    "id": "5df5de3a833a011f",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Call Procedure",
+    "func": "const dataRecord = msg.value;\nconst tableName = dataRecord.tableName;\nconst username = dataRecord.createdBy;\n\nlet procedure = `call INSERT_CLEAN_TBL('${tableName}', '${username}')`\n\nmsg.topic = procedure;\nmsg.event = 'SQL-TABLE-ADD-PROC';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1560,
+    "y": 1420,
+    "wires": [
+      [
+        "aac36d5b0ee13cec"
+      ]
+    ]
+  },
+  {
+    "id": "9f2c0bd60849c87f",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "ResponseTable",
+    "func": "const response = {};\nconst dataRecordResult = \n    {\n        \"smartLinkResponse\": \"TABLE\",\n\t    \"tableName\": msg.value.tableName\n    };\nresponse.dataRecordResult   = dataRecordResult;\nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.failureReason = msg.payload.error[0] || msg.payload.error.message;\n}\nelse{\n    response.status = 'SUCCESS';\n}\nmsg.payload = { \n    ...response, \n    headers: msg.headers\n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 2020,
+    "y": 1420,
+    "wires": [
+      [
+        "6e07153d33333d9c"
+      ]
+    ]
+  },
+  {
+    "id": "cfa0661fc17e37f3",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "property": "payload.value",
+    "action": "",
+    "pretty": false,
+    "x": 450,
+    "y": 400,
+    "wires": [
+      [
+        "49c1f8b9936a58a0"
+      ]
+    ]
+  },
+  {
+    "id": "5c6e04b931af076f",
+    "type": "spinal-consumer",
+    "z": "257a63e31ebdfdb2",
+    "name": "Table Name Request",
+    "outOfRangeOffset": "earliest",
+    "fromOffset": "latest",
+    "topic": "spinal.cmdk.table.info.GetRequest",
+    "groupid": "cmdk-smartlink-table-crud-get-info-request",
+    "connection": {
+      "name": "broker name",
+      "host": "localhost:9092"
+    },
+    "broker": "0",
+    "x": 200,
+    "y": 400,
+    "wires": [
+      [
+        "882644f82ba652ad",
+        "cfa0661fc17e37f3"
+      ]
+    ]
+  },
+  {
+    "id": "448407369fa0a2a2",
+    "type": "spinal-consumer",
+    "z": "257a63e31ebdfdb2",
+    "name": "Table Layer Request",
+    "outOfRangeOffset": "earliest",
+    "fromOffset": "latest",
+    "topic": "spinal.cmdk.table.layers.GetRequest",
+    "groupid": "cmdk-smartlink-table-crud-layer-request",
+    "connection": {
+      "name": "broker name",
+      "host": "localhost:9092"
+    },
+    "broker": "0",
+    "x": 330,
+    "y": 720,
+    "wires": [
+      [
+        "7659761a9c72bf66"
+      ]
+    ]
+  },
+  {
+    "id": "46c7e877b5f182cf",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "name": "Table Name Reply",
+    "topic": "spinal.cmdk.table.info.GetReply",
+    "advancedoptions": false,
+    "acknowledge": "all",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": 30000,
+    "transactiontimeout": 60000,
+    "metadatamaxage": 300000,
+    "allowautotopiccreation": false,
+    "connection": {},
+    "broker": "0",
+    "x": 1670,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "60d7ba81dadf18c2",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 1430,
+    "y": 400,
+    "wires": [
+      [
+        "46c7e877b5f182cf"
+      ]
+    ]
+  },
+  {
+    "id": "30a93ea53782a7a3",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "name": "Get Reply",
+    "topic": "spinal.cmdk.table.layers.GetReply",
+    "advancedoptions": false,
+    "acknowledge": "all",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": 30000,
+    "transactiontimeout": 60000,
+    "metadatamaxage": 300000,
+    "allowautotopiccreation": false,
+    "connection": {},
+    "broker": "0",
+    "x": 1560,
+    "y": 720,
+    "wires": []
+  },
+  {
+    "id": "d7e40ae4f46f50c1",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 1370,
+    "y": 720,
+    "wires": [
+      [
+        "30a93ea53782a7a3"
+      ]
+    ]
+  },
+  {
+    "id": "0fcec17b53c5f778",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "fetch layer debug ",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 870,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "5c3fc7c73210de77",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Response layer debug ",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1460,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "4fc37d4c873a349a",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "debug 27",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1160,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "842d97b8d1dce1be",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "parameters": [],
+    "name": "Core table check script",
+    "func": "const communicationTopic    = msg.payload.value.communicationTopic;\nconst dataRecord            = msg.payload.value.dataRecord;\n\nconst scriptCountTable = `SELECT nvl(max(1), 0) CNT FROM TABELA_SISTEMA WHERE '${dataRecord.layerName}' = 'CORE' OR '${dataRecord.layerName}' IS NULL`;\n\nmsg.topic = scriptCountTable;\nmsg.event = communicationTopic.eventType;\nmsg.value = dataRecord;\nmsg.headers = msg.payload.headers;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 880,
+    "y": 1640,
+    "wires": [
+      [
+        "282639869e818921"
+      ]
+    ]
+  },
+  {
+    "id": "282639869e818921",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "x": 1050,
+    "y": 1680,
+    "wires": [
+      [
+        "18fc056dd9fdf135"
+      ]
+    ]
+  },
+  {
+    "id": "18fc056dd9fdf135",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "name": "switch - Contains tables",
+    "property": "payload.select[0].resultSet[0].CNT",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 1090,
+    "y": 1760,
+    "wires": [
+      [
+        "0c56671d49c67e63"
+      ],
+      [
+        "2a6fe6fa32ca7695"
+      ]
+    ]
+  },
+  {
+    "id": "0c56671d49c67e63",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "3b4c963e23df0afb",
+    "parameters": [],
+    "name": "Core Table Check",
+    "func": "msg.payload.error = {\n    message : 'CORE Table cannot be updated.'\n};\n \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1370,
+    "y": 1760,
+    "wires": [
+      [
+        "7dac69ca6c1d2d86"
+      ]
+    ]
+  },
+  {
+    "id": "e8c48bbddbbb3d1e",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "Core table check script",
+    "func": "const communicationTopic    = msg.payload.value.communicationTopic;\nconst dataRecord            = msg.payload.value.dataRecord;\n\nconst scriptCountTable = `SELECT nvl(max(1), 0) CNT FROM TABELA_SISTEMA WHERE '${dataRecord.layerName}' = 'CORE' OR '${dataRecord.layerName}' IS NULL`;\n\nmsg.topic = scriptCountTable;\nmsg.event = communicationTopic.eventType;\nmsg.value = dataRecord;\nmsg.headers = msg.payload.headers;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 920,
+    "y": 2180,
+    "wires": [
+      [
+        "340eec4683fcb03b"
+      ]
+    ]
+  },
+  {
+    "id": "340eec4683fcb03b",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "",
+    "x": 1050,
+    "y": 2240,
+    "wires": [
+      [
+        "acf3bb1debeef008"
+      ]
+    ]
+  },
+  {
+    "id": "acf3bb1debeef008",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "switch - Contains tables",
+    "property": "payload.select[0].resultSet[0].CNT",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 1130,
+    "y": 2320,
+    "wires": [
+      [
+        "017db3e39d0beae0"
+      ],
+      [
+        "57c8898739214135"
+      ]
+    ]
+  },
+  {
+    "id": "017db3e39d0beae0",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "parameters": [],
+    "name": "Core Table Check",
+    "func": "const dataRecord = msg.value;\n\nmsg.payload.error = {\n    message : 'CORE Table cannot be deleted.'\n};\n \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1430,
+    "y": 2300,
+    "wires": [
+      [
+        "8cbe20a5ca65a199"
+      ]
+    ]
+  },
+  {
+    "id": "e9f21da43f6f051e",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Fetch table Script",
+    "func": "// Get query parameters\n// const filter = msg.requestData;\nconst page              = msg.requestData.page || 1;\nconst pageSize          = msg.requestData.limit || 2;\nconst orderDirection    = msg.requestData.orderDirection || 'ASC';\nconst isLike            = msg.requestData.isLike;\nconst dsApplication     = msg.requestData.dsApplication;\nconst dsTable           = msg.requestData.dsTable;\nconst dsTitle           = msg.requestData.dsTitle;\nconst nmTable           = msg.requestData.nmTable;\nconst shortName         = msg.requestData.shortName;\nconst tableDescription  = msg.requestData.tableDescription;\nconst titleDescription  = msg.requestData.titleDescription;\nconst diffRecordCount   = msg.requestData.diffRecordCount;\n// Add AND clauses\nlet restriction = '';\n  \nif (dsApplication) {\n    restriction += ` AND (DS_APLICACAO IS NULL OR lower(DS_APLICACAO) = lower('${dsApplication}')) `;\n}\n\nif (shortName) {\n    restriction +=` AND (DS_SHORTNAME IS NULL OR UPPER(DS_SHORTNAME) = UPPER('${shortName}')) `;\n    if (nmTable) {\n        restriction += ` AND NM_TABELA != UPPER('${nmTable}')`;\n    }\n}\n\nif (nmTable && shortName == null) {\n    const decodeTable = decodeURIComponent(nmTable);\n    if (isLike) {\n        restriction += ` AND (UPPER(NM_TABELA) LIKE UPPER('%${decodeTable}%'))`;\n    } else {\n        restriction += ` AND (UPPER(NM_TABELA) = UPPER('${decodeTable}')) `;    \n    }\n}\n \nif (tableDescription) {\n    const decodeExpressionDescription = decodeURIComponent(tableDescription);\n    restriction += ` AND CD_EXP_TABELA IN (SELECT * FROM `\n    if (isLike) {\n        restriction += ` (\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_custom\n        WHERE 1 = 1 and upper(ds_expressao) LIKE UPPER('%${decodeExpressionDescription}%')\n        UNION\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_idioma\n        WHERE 1 = 1 and upper(ds_expressao) LIKE UPPER('%${decodeExpressionDescription}%')\n        ))`;\n    } else {\n        restriction += ` (\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_custom\n        WHERE 1 = 1 and upper(ds_expressao) = UPPER('${decodeExpressionDescription}')\n        UNION\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_idioma\n        WHERE 1 = 1 and upper(ds_expressao) = UPPER('${decodeExpressionDescription}')\n        ))`;\n    }\n}\n \nif (titleDescription) {\n    const decodeTitleDescription = decodeURIComponent(titleDescription);\n    restriction += `AND CD_EXP_CADASTRO IN (SELECT * FROM `\n     if (isLike) {\n        restriction += ` (\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_custom\n        WHERE 1 = 1 and upper(ds_expressao) LIKE UPPER('%${decodeTitleDescription}%')\n        UNION\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_idioma\n        WHERE 1 = 1 and upper(ds_expressao) LIKE UPPER('%${decodeTitleDescription}%')\n        ))`;\n    } else {\n        restriction += ` (\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_custom\n        WHERE 1 = 1 and upper(ds_expressao) = UPPER('${decodeTitleDescription}')\n        UNION \n        SELECT CD_EXPRESSAO \n        FROM dic_expressao_idioma\n        WHERE 1 = 1 and upper(ds_expressao) = UPPER('${decodeTitleDescription}')\n        ))`;\n    }\n}\n// Add ORDER BY clauses\nlet orderBy = '';\n\nif (orderDirection) {\n    orderBy += `order by NM_TABELA ${orderDirection} `;\n}\nconst tableSql = `\n  SELECT NM_TABELA,\n        DS_SHORTNAME,\n        DS_CADASTRO,\n        CD_EXP_CADASTRO,\n        DS_TABELA,\n        CD_EXP_TABELA,\n        DS_APLICACAO,\n        DS_LAYER\n  FROM TABELA_SISTEMA\n  WHERE 1=1 AND NVL(DS_LAYER, 'CORE') = 'CORE' \n  ${restriction}\n  ${orderBy}\n`;\n// Build paging\nlet beginPage = 0;\n\nif (page == 1) {\n    beginPage = (parseInt(page) * parseInt(pageSize)) + parseInt(1) - parseInt(pageSize);   \n} else {\n    beginPage = (parseInt(page) * parseInt(pageSize)) + parseInt(1) - parseInt(pageSize) - parseInt(diffRecordCount);   \n}\nconsole.log(beginPage);\nconst endPage = parseInt(beginPage) + parseInt(pageSize);\nconsole.log(endPage);\nconst paging = `SELECT * FROM (\n    SELECT PAGING.*, ROWNUM PAGING_RN FROM (${tableSql}) PAGING WHERE (ROWNUM < \n    ${endPage}\n))\nWHERE (PAGING_RN >= \n    ${beginPage}\n)`;\nmsg.topic = paging;\nmsg.event = 'SELECT-TABLE';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1590,
+    "y": 180,
+    "wires": [
+      [
+        "26cf8bebabf1a3ed",
+        "8a876a24c1b197af"
+      ]
+    ]
+  },
+  {
+    "id": "e2a34cbefb3c7827",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Response table",
+    "func": "const response = {};\nif(msg.payload.error){\n    response.status = 'ERROR';\n    response.error = msg.payload.error[0];\n} else {\n    response.status = 'SUCCESS';\n      if (msg.totalRowCount > 0) {\n        response.rows = msg.payload.select[0].resultSet;\n    } else {\n        response.rows = [];\n    }\n    response.totalRowCount = msg.totalRowCount;\n}\nresponse.correlationId = msg.headers.kafka_correlationId;\nmsg.payload = {\n    ...response,\n    headers: msg.headers\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1820,
+    "y": 240,
+    "wires": [
+      [
+        "f097c2f8b228581e",
+        "96fbc00d19beab08"
+      ]
+    ]
+  },
+  {
+    "id": "cfb2152b93a35230",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Database Debug tables",
+    "active": true,
+    "tosidebar": true,
+    "console": true,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 2090,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "26cf8bebabf1a3ed",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Debug Built SQL tables",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1750,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "f097c2f8b228581e",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Response Debug tables",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 2090,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "8a876a24c1b197af",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "x": 1850,
+    "y": 120,
+    "wires": [
+      [
+        "e2a34cbefb3c7827",
+        "cfb2152b93a35230"
+      ]
+    ]
+  },
+  {
+    "id": "774ba10f2fe9bbe5",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Core table count script",
+    "func": "const requestData = {};\nconst dataRecord = msg.payload.value.dataRecord;\n\nrequestData.page = dataRecord.page;\nrequestData.limit = dataRecord.limit;\nrequestData.tableName = dataRecord.tableName;\nrequestData.orderDirection    = dataRecord.direction;\nrequestData.isLike            = dataRecord.isLike;\nrequestData.dsApplication     = dataRecord.applicationName;\nrequestData.dsTable           = dataRecord.dsTable;\nrequestData.dsTitle           = dataRecord.dsTitle;\nrequestData.nmTable           = dataRecord.tableName;\nrequestData.shortName         = dataRecord.shortName;\nrequestData.tableDescription  =  dataRecord.tableDescription;\nrequestData.titleDescription  = dataRecord.titleDescription;\nrequestData.diffRecordCount   = dataRecord.diffRecordCount;\n \nlet restriction = '';\nif(requestData.nmTable){\n    const tableName = requestData.nmTable;\n    restriction += ` AND (UPPER(NM_TABELA) LIKE UPPER('%${tableName}%')) `;\n}\nif (requestData.tableDescription) {\n    const decodeExpressionDescription = requestData.tableDescription;\n    restriction += ` AND CD_EXP_TABELA IN (SELECT * FROM `\n        restriction += ` (\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_custom\n        WHERE 1 = 1 and upper(ds_expressao) LIKE UPPER('%${decodeExpressionDescription}%')\n        UNION\n        SELECT CD_EXPRESSAO\n        FROM dic_expressao_idioma\n        WHERE 1 = 1 and upper(ds_expressao) LIKE UPPER('%${decodeExpressionDescription}%')\n        ))`;\n}\n \nconst scriptCoreTable = `SELECT COUNT(*) as cnt  FROM TABELA_SISTEMA\n  WHERE 1=1 AND NVL(DS_LAYER, 'CORE') = 'CORE' ${restriction}`;\nmsg.topic = scriptCoreTable;\nmsg.payload.sqlScript = scriptCoreTable;\nmsg.requestData = requestData;\nmsg.headers = msg.payload.headers;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 600,
+    "y": 120,
+    "wires": [
+      [
+        "dcaaa17b3fa9e7f4",
+        "ccfa845e6c639080"
+      ]
+    ]
+  },
+  {
+    "id": "dcaaa17b3fa9e7f4",
+    "type": "tasy data access",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "x": 890,
+    "y": 120,
+    "wires": [
+      [
+        "a81ad8209f811424"
+      ]
+    ]
+  },
+  {
+    "id": "4a4297e1a0c5af59",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "name": "Table count",
+    "property": "payload.hasRowCount",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "nempty"
+      },
+      {
+        "t": "empty"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 1370,
+    "y": 220,
+    "wires": [
+      [
+        "e9f21da43f6f051e"
+      ],
+      [
+        "e2a34cbefb3c7827"
+      ]
+    ]
+  },
+  {
+    "id": "a81ad8209f811424",
+    "type": "function",
+    "z": "257a63e31ebdfdb2",
+    "parameters": [],
+    "name": "Total Row Count Check",
+    "func": "const rowCount = msg.payload.select[0].resultSet[0].CNT;\n\nmsg.totalRowCount = rowCount;\nif(msg.totalRowCount > 0){\n    msg.payload.hasRowCount = [1];\n} else {\n    msg.payload.hasRowCount = [];\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1150,
+    "y": 120,
+    "wires": [
+      [
+        "4a4297e1a0c5af59",
+        "29699709c168f59a"
+      ]
+    ]
+  },
+  {
+    "id": "29699709c168f59a",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "debug 44 tables",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1400,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "ccfa845e6c639080",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "debug 29 tables",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 840,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "fcfc4fbd19b305a6",
+    "type": "debug",
+    "z": "257a63e31ebdfdb2",
+    "name": "Debug Incoming Payload",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 510,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "070f8f160bc9baee",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "property": "payload.value",
+    "action": "",
+    "pretty": false,
+    "x": 390,
+    "y": 120,
+    "wires": [
+      [
+        "774ba10f2fe9bbe5"
+      ]
+    ]
+  },
+  {
+    "id": "1cff1ef58a044ec2",
+    "type": "spinal-consumer",
+    "z": "257a63e31ebdfdb2",
+    "name": "Table Request",
+    "outOfRangeOffset": "earliest",
+    "fromOffset": "latest",
+    "topic": "spinal.cmdk.table.GetRequest",
+    "groupid": "cmdk-smartlink-table-crud-get-request",
+    "connection": {
+      "name": "broker name",
+      "host": "localhost:9092"
+    },
+    "broker": "0",
+    "x": 170,
+    "y": 120,
+    "wires": [
+      [
+        "070f8f160bc9baee",
+        "fcfc4fbd19b305a6"
+      ]
+    ]
+  },
+  {
+    "id": "0353a9958ea4bae5",
+    "type": "spinal-producer",
+    "z": "257a63e31ebdfdb2",
+    "name": "Table Reply",
+    "topic": "spinal.cmdk.table.GetReply",
+    "advancedoptions": false,
+    "acknowledge": "all",
+    "partition": "",
+    "headeritems": {},
+    "key": "",
+    "responsetimeout": 30000,
+    "transactiontimeout": 60000,
+    "metadatamaxage": 300000,
+    "allowautotopiccreation": false,
+    "connection": {},
+    "broker": "0",
+    "x": 2230,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "96fbc00d19beab08",
+    "type": "json",
+    "z": "257a63e31ebdfdb2",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 2050,
+    "y": 240,
+    "wires": [
+      [
+        "0353a9958ea4bae5"
+      ]
+    ]
+  },
+  {
+    "id": "2dfe1c6f426bcb59",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "g": "bda2e70d44d69c26",
+    "name": "Response status",
+    "property": "payload.status",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "ERROR",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "SUCCESS",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 1870,
+    "y": 1260,
+    "wires": [
+      [
+        "6e07153d33333d9c"
+      ],
+      [
+        "5df5de3a833a011f"
+      ]
+    ]
+  },
+  {
+    "id": "d026851bbce658af",
+    "type": "switch",
+    "z": "257a63e31ebdfdb2",
+    "g": "7901cf7a8fc2e9e9",
+    "name": "Response status",
+    "property": "payload.status",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "ERROR",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "SUCCESS",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 1910,
+    "y": 2660,
+    "wires": [
+      [
+        "ac55275a433c946c"
+      ],
+      [
+        "195cbe47508b2141"
+      ]
+    ]
+  }
+]

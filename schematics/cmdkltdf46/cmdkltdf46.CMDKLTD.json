@@ -1,0 +1,42 @@
+{
+  "identifier" : "CMDKLTD",
+  "migrations" : [ {
+    "op" : "replace",
+    "path" : "/",
+    "value" : {
+      "avoidMemoryLeaks" : true,
+      "dialogs" : [ ],
+      "disableDeveloperBar" : false,
+      "experimentalFeatures" : { },
+      "externalAccessItens" : {
+        "ALL_FEATURES" : [ ],
+        "SPOTLIGHT_FEATURES" : [ ]
+      },
+      "externalAcessModal" : false,
+      "featureCode" : 99741,
+      "globalPopups" : [ ],
+      "metadataToFile" : true,
+      "noDataExpressionCode" : 397569,
+      "children" : [ {
+        "children" : [ ],
+        "code" : 762343838,
+        "description" : "Panel",
+        "displayOrder" : 1,
+        "expressionCode" : 314879,
+        "expressionDescription" : "Panel",
+        "metadataFile" : false,
+        "objectType" : "PANEL",
+        "panelWidth" : 12,
+        "parentObjectCode" : 733762291
+      } ],
+      "code" : 733762291,
+      "componentType" : "WSCH",
+      "description" : "Schematic - 12",
+      "metadataFile" : false,
+      "objectType" : "SCHEMATIC",
+      "parentObjectCode" : 0,
+      "schematicFeatureCode" : 733762291
+    }
+  } ],
+  "type" : "PARTNER"
+}
